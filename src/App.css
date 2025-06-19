@@ -231,6 +231,55 @@
   padding: 40px 20px;
 }
 
+/* Стили для страницы деталей фильма */
+.movie-details-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.back-button {
+  background: #4361ee;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.movie-details-content {
+  display: flex;
+  gap: 30px;
+}
+
+.movie-poster-large {
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.movie-info {
+  flex: 1;
+}
+
+.movie-info h1 {
+  margin-top: 0;
+}
+
+/* Стили для ссылок-вкладок */
+.tabs a {
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #adb5bd;
+  font-weight: 500;
+}
+
+.tabs a.active {
+  color: #4361ee;
+  border-bottom: 2px solid #4361ee;
+}
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

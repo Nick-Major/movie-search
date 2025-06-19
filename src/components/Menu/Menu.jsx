@@ -1,29 +1,30 @@
-import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import SearchTab from './SearchTab';
 import FavoritesTab from './FavoritesTab';
 
 const Menu = () => {
-  const [activeTab, setActiveTab] = useState('search');
+  const location = useLocation();
 
   return (
     <div className="menu">
       <div className="tabs">
-        <button
-          className={activeTab === 'search' ? 'active' : ''}
-          onClick={() => setActiveTab('search')}
+        <Link
+          to="/"
+          className={location.pathname === '/' ? 'active' : ''}
         >
           Поиск
-        </button>
-        <button
-          className={activeTab === 'favorites' ? 'active' : ''}
-          onClick={() => setActiveTab('favorites')}
+        </Link>
+        <Link
+          to="/favorites"
+          className={location.pathname === '/favorites' ? 'active' : ''}
         >
           Избранное
-        </button>
+        </Link>
       </div>
 
       <div className="tab-content">
-        {activeTab === 'search' ? <SearchTab /> : <FavoritesTab />}
+        {location.pathname === '/' && <SearchTab />}
+        {location.pathname === '/favorites' && <FavoritesTab />}
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
-const MovieCard = ({ movie, onAddToFavorites, onRemoveFromFavorites }) => {
+import { Link } from 'react-router-dom';
 
+const MovieCard = ({ movie, onAddToFavorites, onRemoveFromFavorites }) => {
   const formatRating = (rating) => {
     if (!rating || rating === 'N/A') return 'N/A';
     return parseFloat(rating).toFixed(1);
@@ -7,15 +8,20 @@ const MovieCard = ({ movie, onAddToFavorites, onRemoveFromFavorites }) => {
 
   return (
     <div className="movie-card">
-      <div className="movie-poster">
-        {movie.Poster && movie.Poster !== 'N/A' ? (
-          <img src={movie.Poster} alt={`Постер фильма "${movie.Title}"`} />
-        ) : (
-          <div className="no-poster">Нет постера</div>
-        )}
-      </div>
+      <Link to={`/movie/${movie.imdbID}`} className="movie-poster-link">
+        <div className="movie-poster">
+          {movie.Poster && movie.Poster !== 'N/A' ? (
+            <img src={movie.Poster} alt={`Постер "${movie.Title}"`} />
+          ) : (
+            <div className="no-poster">Нет постера</div>
+          )}
+        </div>
+      </Link>
+
       <div className="movie-details">
-        <h2>{movie.Title} ({movie.Year})</h2>
+        <h2>
+          <Link to={`/movie/${movie.imdbID}`}>{movie.Title} ({movie.Year})</Link>
+        </h2>
         
         <div className="detail-row">
           <span className="detail-label">Жанр:</span>
@@ -45,7 +51,10 @@ const MovieCard = ({ movie, onAddToFavorites, onRemoveFromFavorites }) => {
         <div className="movie-actions">
           {onAddToFavorites && (
             <button 
-              onClick={onAddToFavorites} 
+              onClick={(e) => {
+                e.stopPropagation();
+                onAddToFavorites();
+              }} 
               className="favorite-btn"
               aria-label="Добавить в избранное"
             >
@@ -61,7 +70,10 @@ const MovieCard = ({ movie, onAddToFavorites, onRemoveFromFavorites }) => {
 
           {onRemoveFromFavorites && (
             <button 
-              onClick={onRemoveFromFavorites} 
+              onClick={(e) => {
+                e.stopPropagation();
+                onRemoveFromFavorites();
+              }}
               className="remove-btn"
               aria-label="Удалить из избранного"
             >
