@@ -2,7 +2,7 @@ import MovieCard from './MovieCard';
 import { useDispatch } from 'react-redux';
 import { removeFromFavorites } from '../store/movieSlice';
 
-const Favorites = ({ movies }) => {
+const Favourites = ({ movies }) => {
   const dispatch = useDispatch();
 
   if (movies.length === 0) {
@@ -22,4 +22,4 @@ const Favorites = ({ movies }) => {
   );
 };
 
-export default Favorites;
+export default Favourites;

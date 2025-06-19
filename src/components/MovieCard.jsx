@@ -1,8 +1,8 @@
 const MovieCard = ({ movie, onAddToFavorites, onRemoveFromFavorites }) => {
-  // Форматируем рейтинг (если есть)
+
   const formatRating = (rating) => {
     if (!rating || rating === 'N/A') return 'N/A';
-    return parseFloat(rating).toFixed(1); // Оставляем 1 знак после запятой
+    return parseFloat(rating).toFixed(1);
   };
 
   return (
